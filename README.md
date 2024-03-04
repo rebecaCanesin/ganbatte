@@ -5,7 +5,7 @@ Ganbatte is a Japanese word that means something like "do your best". That was t
 ![Ganbatte](https://media1.tenor.com/m/1_9F5P9PLS4AAAAC/kanna-tamachi-ganbatte.gif)
 
 This application aims to present the user with a list of anime and manga, it is a query application.
-For the development of this application, the Kitsu API was used [Kitsu API](https://kitsu.docs.apiary.io/#). The application is available at this [link](https://ganbatte.vercel.app/) and does not require authentication to navigate.
+For the development of this application, the Kitsu API was used [Kitsu API](https://kitsu.docs.apiary.io/#). The application is available at this [link](https://ganbatte-delta.vercel.app/) and does not require authentication to navigate.
 
 
 
