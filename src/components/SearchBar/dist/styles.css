@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #FFE486;
+  justify-content: space-between;
+  margin: 0;
+  padding: 5px;
+  align-items: center;
+}
+.container > div {
+  display: flex;
+  flex-direction: row;
+}
+.container > div > div {
+  color: #0B167D;
+  background-color: #FFE486;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 15px;
+}
+.container > div > div:hover {
+  background-color: #0B167D;
+  color: #FFE486;
+}
+.search-input {
+  width: 200px;
+}

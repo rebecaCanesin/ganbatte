@@ -1,6 +1,6 @@
 export const categories = [
   'Comedy', 
-  'Romance',
+  'Romance', 
   'Fantasy',
   'Action',
   'Drama',
@@ -28,15 +28,15 @@ export const categories = [
   'Present',
   'Seinen',
   'Shounen Ai',
-  'Martial Arts',
+  'Martial Arts', 
   'Asia',
   'Isekai',
   'Mecha',
   'Demon',
   'Shoujo',
   'Super Power',
-  'Fantasy World',
-  'Violence',
-  'Military',
+  'Fantasy World', 
+  'Violence', 
+  'Military', 
   'Parody'
 ];

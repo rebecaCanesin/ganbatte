@@ -1,0 +1,73 @@
+.MainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.ImageInfoContainer {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 768px) {
+  .ImageInfoContainer {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.Img {
+  max-width: 50vw; 
+  height:fit-content;
+  flex-shrink: 0; 
+}
+
+.InfoContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.TechnicalInfoContainer {
+  background-color: #FFE486;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .TechnicalInfoContainer {
+    padding-left: 100px;
+  }
+}
+
+.TrailerText {
+  display: block;
+}
+
+.TrailerContainer {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #0B167D;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.TrailerContainer:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px rgba(255, 228, 134, 0.6);
+}
+
+.TrailerContainer.noTrailer {
+  background-color: #ccc;
+  color: #666;
+  cursor: default;
+}
+
+.TrailerContainer.noTrailer:hover {
+  transform: none;
+  box-shadow: none;
+}

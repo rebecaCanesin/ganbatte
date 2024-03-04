@@ -1,8 +1,10 @@
-import { getAnimeById, getCharacterById, getCharactersList, getMangaById } from "@/api/axios";
+import React from 'react';
+import { getAnimeById, getMangaById } from "@/api/axios";
 import VideoModal from "@/components/TrailerModal";
 import convertRatingToScale5 from "@/utils/convertRating";
 import getStartYear from "@/utils/getYear";
-import { Carousel, Rate } from "antd";
+import { Rate } from "antd";
+import './styles.css';
 
 export default async function Details({params, searchParams }: { params: { id: any }, searchParams: { filter: string} }) {
   const mediaId = params.id;
@@ -24,7 +26,7 @@ export default async function Details({params, searchParams }: { params: { id: a
   }
   const pageData = await fetchData();
 
-  const { attributes, relationships } = pageData.data;
+  const { attributes } = pageData.data;
 
   const year = getStartYear(attributes.startDate);
 
@@ -37,31 +39,33 @@ export default async function Details({params, searchParams }: { params: { id: a
   };
 
   return (
-   <div style={{display:'flex', flexDirection: 'column'}}>
-    <h1>Details Page</h1>
-    <div style={{display:'flex', flexDirection:'row', flexShrink:1}}>
-      <img src={attributes.posterImage.small} />
-      <div style={{display:'flex', flexDirection:'column'}}>
-        <div>{`${attributes.canonicalTitle} (${year})`}</div>
-        <div>{attributes.synopsis}</div>
+    <div className="MainContainer">
+      <div className="ImageInfoContainer">
+        <img src={attributes.posterImage.small} className="Img" />
+        <div className="InfoContainer">
+          <h1>{`${attributes.canonicalTitle} (${year})`}</h1>
+          <div>{attributes.synopsis}</div>
+        </div>
       </div>
+      <div className="TechnicalInfoContainer">
+        <h3>Ficha técnica</h3>
+        <p>Average Rating: {handleRating(attributes.averageRating)}</p>
+        <p>Age rating: {attributes.ageRatingGuide || 'Information not available'}</p>
+        <p>Status: {attributes.status || 'Information not available'}</p>
+        <p>Number of episodes: {attributes.episodeCount || 'Information not available'}</p>
+        <p>Show Type: {attributes.showType || 'Information not available'}</p>
+      </div>
+      {filter === 'anime' && (
+        attributes.youtubeVideoId ? (
+          <div className="TrailerContainer">
+            <div className="TrailerText">Watch Trailer</div>
+            <VideoModal videoId={attributes.youtubeVideoId} />
+          </div>
+        ) : (
+          <div className="TrailerContainer noTrailer">
+            <div className="TrailerText">Trailer not available</div>
+          </div>
+        )
+      )}
     </div>
-    <div>
-      <span>Ficha técnica</span>
-      <p>Average Rating: {handleRating(attributes.averageRating)}</p>
-      <p>Age rating: {attributes.ageRatingGuide || ''}</p>
-      <p>Status: {attributes.status || ''}</p>
-      <p>Number of episodes: {attributes.episodeCount || ''}</p>
-      <p>Show Type: {attributes.showType || ''}</p>
-    </div>
-    {filter === 'anime' && (attributes.youtubeVideoId ? (
-      <>
-        <div>Container de trailer</div>
-        <VideoModal videoId={attributes.youtubeVideoId} />
-      </>
-      ) : (
-        <div>Trailer Not Available</div> 
-      ))}
-  </div>
-  );
-}
+)};

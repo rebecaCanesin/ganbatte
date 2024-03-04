@@ -44,19 +44,9 @@ export const getMangaById = async (id: number) => {
   }
 };
 
-export const searchAnimeByText = async (text: string) => {
+export const searchByText = async (type: string, text: string) => {
   try {
-    const response = await instance.get(`edge/anime?filter[text]=${text}`);
-    return response.data;
-  } catch (error) {
-    console.error('Error while fetching data:', error);
-    return null;
-  }
-};
-
-export const searchMangaByText = async (text: string) => {
-  try {
-    const response = await instance.get(`edge/manga?filter[text]=${text}`);
+    const response = await instance.get(`edge/${type}?filter[text]=${text}`);
     return response.data;
   } catch (error) {
     console.error('Error while fetching data:', error);

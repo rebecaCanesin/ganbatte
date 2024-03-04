@@ -1,6 +1,8 @@
+import React from 'react';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import Link from "next/link";
+import './dist/global-styles.css'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className} id="root">
+        <header className="header">
+          <Link href={'/'}><img src='/assets/GANBATTE.svg'/></Link>
+        </header>
+        <div><img src='/assets/Sream-de-Animes-3.jpg' className="banner_img" /></div>
+
+        {children}
+      <footer className="footer"><p>Desenvolvido com ❤️ por <a href="https://github.com/rebecaCanesin">Rebeca Canesin</a></p></footer>
+      </body>
     </html>
   );
 }
