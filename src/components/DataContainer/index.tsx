@@ -28,7 +28,7 @@ const DataContainer = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [dataType]);
 
   useEffect(() => {
     handleRenderFirstData()
@@ -53,7 +53,7 @@ const DataContainer = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [categorie, dataType, isCategorie, offset]);
 
   const handleCategorieChange = useCallback(async (categorieName: string) => {
     setLoading(true);
@@ -69,7 +69,7 @@ const DataContainer = () => {
       setLoading(false);
     }
     
-  }, []);
+  }, [dataType, offset]);
 
   async function viewMore () {
     setLoading(true);

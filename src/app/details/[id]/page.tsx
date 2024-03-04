@@ -7,6 +7,7 @@ import convertRatingToScale5 from "@/utils/convertRating";
 import getStartYear from "@/utils/getYear";
 import { Rate } from "antd";
 import './styles.css';
+import Image from 'next/image';
 
 const seo = SEOConfig(
   'Ganbatte Project Details Page',
@@ -14,7 +15,12 @@ const seo = SEOConfig(
   'https://www.ganbatte.vercel.app/'
 );
 
-export default async function Details({params, searchParams }: { params: { id: any }, searchParams: { filter: string} }) {
+interface DetailsProps {
+  params: { id: any };
+  searchParams: { filter: string };
+}
+
+export default async function Details({ params = { id: 0 }, searchParams = { filter: 'anime' } }: DetailsProps) {
   const mediaId = params.id;
   const filter = searchParams.filter;
 
@@ -32,14 +38,14 @@ export default async function Details({params, searchParams }: { params: { id: a
         return null;
     }
   }
-  const pageData = await fetchData();
+  const pageData = await fetchData() || [];
 
   const { attributes } = pageData.data;
 
   const year = getStartYear(attributes.startDate);
 
   const handleRating = (averageRating: number) => {
-    const rating = convertRatingToScale5(averageRating);
+    const rating = convertRatingToScale5(averageRating) || 0;
 
       return (
         <Rate disabled defaultValue={rating} />
@@ -48,10 +54,9 @@ export default async function Details({params, searchParams }: { params: { id: a
 
   return (
     <>
-      <NextSeo {...seo} />
       <div className="MainContainer">
         <div className="ImageInfoContainer">
-          <img src={attributes.posterImage.small} className="Img" />
+          <Image src={attributes.posterImage.small} alt="poster image" className="Img" />
           <div className="InfoContainer">
             <h1>{`${attributes.canonicalTitle} (${year})`}</h1>
             <div>{attributes.synopsis}</div>

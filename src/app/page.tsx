@@ -9,10 +9,9 @@ const seo = SEOConfig(
   'https://www.ganbatte.vercel.app/'
 );
 
-export default async function Home() {
+export default function Home() {
   return (
     <>
-      <NextSeo {...seo} />
       <DataContainer />
     </>
   );

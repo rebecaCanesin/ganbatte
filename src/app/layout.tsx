@@ -5,6 +5,7 @@ import Link from "next/link";
 import './dist/global-styles.css'
 import { NextSeo } from 'next-seo';
 import { SEOConfig } from '@/utils/seoConfig';
+import Image from 'next/image';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,13 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <NextSeo {...seo} />
       <html lang="en">
         <body className={inter.className} id="root">
           <header className="header">
-            <Link href={'/'}><img src='/assets/GANBATTE.svg'/></Link>
+            <Link href={'/'}><Image src='/assets/GANBATTE.svg' alt='logo'/></Link>
           </header>
-          <div><img src='/assets/Sream-de-Animes-3.jpg' className="banner_img" /></div>
+          <div><Image src='/assets/Sream-de-Animes-3.jpg' alt='banner' className="banner_img" /></div>
 
           {children}
         <footer className="footer"><p>Desenvolvido com ❤️ por <a href="https://github.com/rebecaCanesin">Rebeca Canesin</a></p></footer>
